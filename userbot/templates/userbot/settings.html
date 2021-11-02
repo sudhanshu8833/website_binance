@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTS ALLEY: USER SETTINGS</title>
+    <link rel="shortcut icon" type="image/png" href="../data/img/icon.png" />
+    <link rel="stylesheet" href="./settings.css">
+</head>
+<body>
+    <div class="container">
+
+        <h1>BOTS ALLEY</h1>
+        <!-- Section -->
+        <section class="form-section">
+            <form>
+
+              <h2 class="form-section-heading">Personal Details</h2>
+              <img src="../data/img/2701084_avatar_person_picture_profile_social_icon.png" alt="user-img" id="user-img">
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="first-name">First Name : </label>
+                  <input class="input" id="first-name" type="text" readonly placeholder="" value="%NAME_USER%">
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="last-name">Last Name : </label>
+                  <input class="input" id="last-name" type="text" placeholder="" value="Andrews">
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="text">ID : </label>
+                  <input class="input" id="text" type="text" autofocus readonly value="%USER_ID%">
+                </div>
+              </div>
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="email">Email : </label>
+                  <input class="input" id="email" type="text" autofocus value="%USER_EMAIL%">
+                </div>
+              </div>
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="pass">Password : </label>
+                  <input class="input" id="pass" type="password" autofocus value="%USER_PASS%">
+                </div>
+              </div>
+
+            </form>
+        </section>
+
+        <!-- Section -->
+        <section class="form-section">
+            <form>
+                <h2 class="form-section-heading">Bank Details : </h2>
+
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Bank name : </label>
+                      <input class="input" id="bank" type="text" autofocus value="%USER_BANK%" required>
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Account number : </label>
+                      <input class="input" id="bank" type="text" autofocus value="%USER_ACC_NUM%" required>
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">IFSC code : </label>
+                      <input class="input" id="bank" type="text" autofocus value="%USER_IFSC_CODE%" required>
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Account holder name : </label>
+                      <input class="input" id="bank" type="text" autofocus value="%USER_ACC_HOLDER%" required>
+                    </div>
+                  </div>
+              </form>
+        </section>
+        <section class="form-section">
+            <form>
+                <h2 class="form-section-heading">BOT API KEYS : </h2>
+
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="binance_api">Binance api key : </label>
+                      <input class="input" id="binance_api" type="text" autofocus value="%BINANACE_API_KEY%" required>
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="binance_secret">Binance secret key : </label>
+                      <input class="input" id="binance_secret" type="text"  autofocus value="%BINANCE_SECRET%" required >
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="angel_api">Angel API Key : </label>
+                      <input class="input" id="angel_api" type="text" autofocus value="%ANGEL_API_KEY%" required >
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="angel_username">Angel username : </label>
+                      <input class="input" id="angel_username" type="text" autofocus value="%ANGEL_USERNAME%" required >
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="angel_password">Angel password : </label>
+                      <input class="input" id="angel_password" type="text" autofocus value="%ANGEL_PASSWORD%" required >
+                    </div>
+                  </div>
+              </form>
+        </section>
+        <section class="form-section">
+            <form>
+
+              <h2 class="form-section-heading">More Info</h2>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="about">About You <span class="helper-text">(Tell us your story)</span></label>
+                  <textarea class="input" id="about"></textarea>
+                </div>
+              </div>
+
+              <!-- <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="color">Favorite color?</label>
+                  <select class="select" id="color">
+                    <option>- Select -</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Yellow</option>
+                    <option>Orange</option>
+                    <option>Green</option>
+                    <option>Purple</option>
+                    <option>White</option>
+                    <option>Brown</option>
+                    <option>Black</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="sport">Favorite sport?</label>
+                  <select class="select" id="sport">
+                    <option>- Select -</option>
+                    <option>Basketball</option>
+                    <option>Volleyball</option>
+                    <option>Football</option>
+                    <option>Soccer</option>
+                    <option>Tennis</option>
+                    <option>Swimming</option>
+                    <option>Bowling</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="movie">Favorite Movie</label>
+                  <input class="input" id="movie" type="text" placeholder="">
+                </div>
+              </div> -->
+            </form>
+        </section>
+        <button type="submit" class="btn">SUBMIT</button>
+        <button type="reset" class="btn">RESET</button>
+        <button type="button" class="btn" onclick="location.href='./index.html'">DASHBOARD</button>
+
+    </div>
+</body>
+</html>

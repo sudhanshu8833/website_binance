@@ -1,0 +1,245 @@
+    .wr {
+      position: relative;
+    }
+    .te {
+      font-size: 10vw;
+      line-height: .8;
+      color: rgb(177, 177, 177);
+      text-transform: uppercase;
+      font-weight: bold;
+      /* background-color: pink; */
+    }
+    .wr .te:nth-child(2),
+    .wr .te:nth-child(3),
+    .cr {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    .wr .te:nth-child(1) {
+      clip-path: polygon(100% 0, 3% 0, 100% 97%);
+      transition: transform .6s;
+    }
+    .wr .te:nth-child(2) {
+      clip-path: polygon(0 3%, 0% 100%, 97% 100%);
+    }
+    .wr .te:nth-child(3) {
+      opacity: 1;
+      transition: opacity .1s .6s;
+    }
+    .cr {
+      background-color: hsl(0, 0%, 20%);
+      width: 100%;
+      height: 100%;
+      clip-path: polygon(0 3%, 3% 0, 100% 97%, 97% 100%);
+      transform: translate(-100%, -100%);
+      transition: transform .3s;
+    }
+    .wr:hover .cr{
+      transform: translate(0, 0);
+    }
+    .wr:hover .te:nth-child(3) {
+      opacity: 0;
+      transition: opacity .1s .3s;
+    }
+    .wr:hover .te:nth-child(1) {
+      transition: transform .6s .5s;
+      transform: translate(10%, 10%);
+    }
+
+
+.front-img {
+  height: 50rem;
+  width: 100%;
+}
+.motto {
+  margin: auto;
+  width: 25%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 25px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+}
+.custom-front {
+  filter: brightness(0.3) invert(0.5);
+  -webkit-filter: grayscale(50%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(50%);
+}
+.custom-nav::before {
+  background: transparent;
+}
+
+/* // ICONS */
+.svg-check{
+  display: inline;
+}
+.fa {
+  padding: 20px;
+  font-size: 50px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+.fa:hover {
+  opacity: 0.7;
+}
+.fa-facebook-f:before,
+.fa-facebook:before {
+  color: rgb(63, 94, 197);
+}
+.fa-twitter-f:before,
+.fa-twitter:before {
+  color: rgb(255, 255, 255);
+}
+.fa-youtube-f:before,
+.fa-youtube:before {
+  color: rgb(255, 0, 0);
+}
+.fa-facebook-f:before,
+.fa-facebook:before {
+  color: rgb(119, 151, 255);
+}
+@media (min-width: 800px) and (max-width: 850px) {
+  .navbar:not(.top-nav-collapse) {
+    background: #1c2331 !important;
+  }
+}
+.view,
+body,
+html {
+  height: 100%;
+}
+.navbar {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.page-footer,
+.top-nav-collapse {
+  background-color: #1c2331;
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #1c2331;
+  }
+}
+
+
+
+/* * {
+  box-sizing: border-box;
+} */
+
+.bg-image {
+  /* The image used */
+  background-image: url("../../static/shop/data/img/pexels-anna-nekrashevich-6801874.jpg");
+
+  /* Add the blur effect */
+   backdrop-filter:blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  /* Full height */
+  height: 100%;
+  z-index: -1;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(32, 13, 13, 0.267); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  /* border: 3px solid #f1f1f1; */
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+}
+.learn_more{
+  text-decoration: none;
+}
+.learn_more:hover{
+  color: #dc3545;
+}
+.learn-box{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.custom_bot{
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  opacity: 1;
+}
+.message_custom{
+  margin: auto;
+  text-align: center;
+  width: 50%;
+  color: #434274;
+  opacity: 0;
+}
+.custom_bot_head{
+  width: 60%;
+  text-align: center;
+  margin: 50px auto;
+  color:#434274;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.motto {
+  margin: 150px auto;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  margin-top: 25px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  top: 50px;
+}
+
+
+
+.back_com{
+  position: relative;
+  margin: auto;
+  text-align: center;
+  width: 70%;
+  font-family: 'Oswald', sans-serif;
+  margin: auto;
+  padding: 80px;
+  z-index: 2;
+  color: rgb(255, 255, 255);
+}
+.back_com a{
+  border: 2px solid white;
+  padding: 5px;
+  border-radius: 8px;
+  margin: 5px;
+  background-color: rgba(255, 255, 255, 0.479);
+  text-decoration: none;
+  font-size: 19px;
+  font-weight: bolder;
+}
+.back_com a:hover{
+  color:#dc3545;
+} 
+.back_com_sec{
+  margin: 150px 0px;
+  background-image: linear-gradient( to bottom,rgb(33 29 55), rgb(0 0 0)), url("../../static/shop/data/img/pexels-dio-hasbi-saniskoro-3280130.jpg");
+  background-size: cover;
+  background-blend-mode: soft-light;
+}

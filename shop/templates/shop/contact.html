@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTS ALLEY: CONTACT US</title>
+    {% load static %}
+<link rel='stylesheet' type="text/css" href="{% static 'shop/contact.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'shop/data/img/icon.png' %}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+<body ng-app="">
+
+  <div class="box">
+    <div class="logo" >
+      <img src="{% static 'shop/data/img/icons/bot.png' %}" style="width: 50px; margin: 15px;">
+    </div>
+    <div class="text">
+    <h1>Contact <span class="red">Us</span></h1>
+    <hr class="redline">
+    <p>Have Questions ? We have answers ( may be )</p>
+    </div>
+  </div>
+
+  <div class="touch">
+    <h2>Get in touch</h2>
+    <hr class="redline">
+  </div>
+  
+  <form action="" method="POST" name="contact-form">
+  <div class="container form-margin">
+    <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>     <div class="col-lg-4 col-md-4 col-sm-4">
+      <div class="form-group">
+    <input type="text" class="form-control" placeholder="First Name" ng-model="firstname" name="firstname" required>    
+      </div>
+    <div class="form-group">
+    <input type="text" class="form-control" placeholder="Company Name" ng-model="company" name="company" required>    
+      </div>
+    <div class="form-group">
+    <input type="text" class="form-control" placeholder="Phone" ng-model="phone" name="firstname" required>    
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <div class="form-group">
+    <input type="text" class="form-control" placeholder="Last Name" ng-model="lastname" name="lastname" required>    
+      </div>
+      <div class="form-group">
+    <input type="email" class="form-control" placeholder="E-mail" ng-model="email" name="email" required>    
+      </div>
+      <div class="form-group">
+    <input type="text" class="form-control" placeholder="Course" ng-model="course" name="course" required>    
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+    <div class="col-lg-8 col-md-8 col-sm-8">
+      <div class="form-group">
+    <textarea class="form-control" rows="6" placeholder="Message" ng-model="message" name="message" required></textarea>
+  </div>  
+      <div class="pager">
+      <button type="submit" class="btn btn-success">SEND MESSAGE</button>
+      </div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+  
+  </div>
+  </form>
+  <!--address-->
+
+  <div class="container address">
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+      <h3>Our Address</h3>
+      <div class="redline-address"></div>
+      <p>34#1, 13th Cross Roads</p>
+      <p>NGR Layout</p>
+      <p>Delhi</p>
+      <p>India</p>
+      <div class="phone-e">
+      <p><span class="glyphicon glyphicon-envelope"> </span> abc@abc.com</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +91 000000000</p>
+      </div>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+
+  </div>
+  
+  <div class="bottom-gap"></div>
+  
+</body>
+</html>

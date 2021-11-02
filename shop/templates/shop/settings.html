@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTS ALLEY: USER SETTINGS</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'shop/data/img/icon.png'%}" />
+    <link rel="stylesheet" href="{% static 'shop/settings.css'%}">
+</head>
+<body>
+  <div id="flash">
+    {% if messages %}
+         {% for message in messages %}
+                  <div class="alert alert-{{ message.tags}} m-0" role="alert">
+                         <strong>{{ message }}</strong>
+                   </div>
+         {% endfor %}
+    {% endif %}
+</div>
+    <div class="container">
+
+        <h1>BOTS ALLEY</h1>
+
+        <!-- Section -->
+        <section class="form-section">
+            <form action="/settings" method="post">{% csrf_token %}
+                <h2 class="form-section-heading">Account Details : </h2>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Account number : </label>
+                      <input class="input" id="bank" type="text" name="number"autofocus value="{{ myuser.account_num}}" required>
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">IFSC code : </label>
+                      <input class="input" id="bank" type="text" name="ifsc" autofocus value="{{ myuser.ifsc}}" required>
+                    </div>
+                  </div>
+                <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Account holder name : </label>
+                      <input class="input" id="bank" type="text" name="fullname" autofocus value="{{ myuser.fullname }}" required>
+                    </div>
+                  </div>
+                  <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Binance API Key : </label>
+                      <input class="input" id="bank" type="text" name="binanceapi" autofocus value="{{ myuser.binance_API_keys }}" required>
+                    </div>
+                  </div>
+                  <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Binance Secret Key : </label>
+                      <input class="input" id="bank" type="text" name="binancesecret" autofocus value="{{ myuser.binance_Secret_Keys }}" required>
+                    </div>
+                  </div>
+                  <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Angel API Key : </label>
+                      <input class="input" id="bank" type="text" name="angelapi" autofocus value="{{ myuser.angel_API_keys }}" required>
+                    </div>
+                  </div>
+                  <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Angel Username : </label>
+                      <input class="input" id="bank" type="text" name="angelusername" autofocus value="{{ myuser.angel_username }}" required>
+                    </div>
+                  </div>
+                  <div class="field-wrap">
+                    <div class="field">
+                      <label class="label" for="bank">Angel Password : </label>
+                      <input class="input" id="bank" type="text" name="angelpassword" autofocus value="{{ myuser.angel_password }}" required>
+                    </div>
+                  </div>
+        </section>
+        <button type="submit" class="btn">SUBMIT</button>
+      </form>
+        <button type="button" class="btn" onclick="location.href='/index'">DASHBOARD</button>
+
+    </div>
+</body>
+<script>
+	setTimeout(function () {
+	 $('#flash').fadeOut('fast');
+	 },5000);
+</script> 
+</html>

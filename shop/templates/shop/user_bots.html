@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTS ALLEY : BOTS OWNED</title>
+</head>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'shop/data/img/icon.png' %}" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+<link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" />
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'shop/user_bots.css' %}">
+<link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+<body>
+  <div id="flash">
+    {% if messages %}
+         {% for message in messages %}
+                  <div class="alert alert-{{ message.tags}} m-0" role="alert">
+                         <strong>{{ message }}</strong>
+                   </div>
+         {% endfor %}
+    {% endif %}
+  </div>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="container">
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon"></span> -->
+      </button>
+
+      <!-- Links -->
+      <div class="navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Left -->
+        <ul class="navbar-nav m-md-auto">
+          <li class="nav-item active">
+            <a class="nav-link text-danger active fw-bold" href="/index">Dashboard
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/all_bots">Ecommerce</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user_bots">My bots</a>
+          </li>
+        </ul>
+        <button class="btn btn-danger px-2 mx-3" onclick="location.href='/all_bots'">Add More</button>
+      </div>
+    </div>
+  </nav>
+  <div class="header">
+    <h1 class="page-heading">
+      <span class="page-heading-primary">BOTS ALLEY</span>
+      <span class="page-heading-secondary">YOUR BOTS!</span>
+    </h1>
+  </div>
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <!-- from here -->
+        {% for i,j in zipped %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <h1 class="p-lg-3">{{ i.title }}</h1>
+            <div class="card-body">
+              <p class="card-text">{{ i.description }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="col-xs-12 col-md-6">
+                  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#Modal-EDIT-{{i.title}}"><b> EDIT
+                      MAX LOSS </b></button>
+                </div>
+                <small class="text-muted">Valid till : <span>{{ j.Expiry_date }}</span></small>
+                <small class="text-muted">Maximum Loss : <span>{{ j.Max_loss }} %</span></small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="Modal-EDIT-{{i.title}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Maximum Loss Percentage</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form action="/user_bots" method="post" >{% csrf_token %}
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Write maximum loss percentage here:</label>
+                    <input type="text" class="form-control" name="maxloss" id="recipient-name">
+                    <input id="buy_item" name="buy_item" type="hidden" value="{{ i.title }}">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+   {% endfor %}
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-danger" onclick="location.href='/index'"> DASHBOARD</button>
+  <button class="btn btn-success" onclick="location.href='/all_bots'"> BUY MORE!</button>
+  <br>
+  <br>
+</body>
+
+</html>

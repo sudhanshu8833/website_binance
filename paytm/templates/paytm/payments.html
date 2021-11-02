@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTS ALLEY: USER SETTINGS</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="../data/img/icon.png" />
+    <link rel="stylesheet" href="{% static 'paytm/settings.css' %}">
+</head>
+<body>
+    <div class="container">
+
+
+        <!-- Section -->
+        <section class="form-section">
+            <form action="/paytm/payment_processing" method='post'> {% csrf_token %}
+
+              <h2 class="form-section-heading">How much money you want to add?</h2>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="first-name">Amount : </label>
+                  <input class="input" name ="amount" id="first-name" type="number">
+                </div>
+              </div>
+
+              <!-- <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="color">Favorite color?</label>
+                  <select class="select" id="color">
+                    <option>- Select -</option>
+                    <option>Red</option>
+                    <option>Blue</option>
+                    <option>Yellow</option>
+                    <option>Orange</option>
+                    <option>Green</option>
+                    <option>Purple</option>
+                    <option>White</option>
+                    <option>Brown</option>
+                    <option>Black</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="sport">Favorite sport?</label>
+                  <select class="select" id="sport">
+                    <option>- Select -</option>
+                    <option>Basketball</option>
+                    <option>Volleyball</option>
+                    <option>Football</option>
+                    <option>Soccer</option>
+                    <option>Tennis</option>
+                    <option>Swimming</option>
+                    <option>Bowling</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="movie">Favorite Movie</label>
+                  <input class="input" id="movie" type="text" placeholder="">
+                </div>
+              </div> -->
+
+            
+        </section>
+        <button type="submit" class="btn" >SUBMIT</button>
+
+        <button type="button" class="btn" onclick="location.href='./index.html'">DASHBOARD</button>
+      </form>
+    </div>  
+</body>
+</html>

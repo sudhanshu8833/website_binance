@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTS ALLEY: CHECKOUT</title>
+</head>
+{% load static %}
+<link rel="shortcut icon" type="image/png" href="{% static 'shop/data/img/icon.png' %}" />
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+<link rel="shortcut icon" href="src/img/favicon.png" type="image/x-icon" /> -->
+<!-- <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet"> -->
+
+<link rel="stylesheet" href="{% static 'shop/checkout.css' %}">
+<body>
+    <div class="head">
+        <h1>CHECKOUT CART : <img src="{% static 'shop/data/img/shopping-cart.png' %}" height="50px" width="50px" alt=""></h1>
+    </div>
+
+    <div class="cart-outer">
+      <div class="cart-element">
+          <div class="element-heading">
+              <h2>%BOT_NAME%</h2>
+              <hr>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere animi laudantium, illum distinctio eos voluptatem, corporis quo sunt quam accusamus repellat obcaecati necessitatibus aperiam id. Eos reiciendis ut cumque corrupti!</p>
+              <label class="label" for="Quantity">Quantity : </label>
+              <input type="number" name="Quantity" id="number_of_bots" value="1">
+              <h3>Price : <span>%PRICE%</span></h3>
+              <h3>Valid till : <span>%VALID%</span></h3>
+              <button class="btn">Remove</button>
+          </div>
+      </div>
+      <div class="cart-element">
+          <div class="element-heading">
+              <h2>%BOT_NAME%</h2>
+              <hr>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere animi laudantium, illum distinctio eos voluptatem, corporis quo sunt quam accusamus repellat obcaecati necessitatibus aperiam id. Eos reiciendis ut cumque corrupti!</p>
+              <label class="label" for="Quantity">Quantity : </label>
+              <input type="number" name="Quantity" id="number_of_bots" value="1">
+              <h3>Price : <span>%PRICE%</span></h3>
+              <h3>Valid till : <span>%VALID%</span></h3>
+              <button class="btn">Remove</button>
+          </div>
+      </div>
+      <div class="cart-element">
+          <div class="element-heading">
+              <h2>%BOT_NAME%</h2>
+              <hr>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere animi laudantium, illum distinctio eos voluptatem, corporis quo sunt quam accusamus repellat obcaecati necessitatibus aperiam id. Eos reiciendis ut cumque corrupti!</p>
+              <label class="label" for="Quantity">Quantity : </label>
+              <input type="number" name="Quantity" id="number_of_bots" value="1">
+              <h3>Price : <span>%PRICE%</span></h3>
+              <h3>Valid till : <span>%VALID%</span></h3>
+              <button class="btn">Remove</button>
+          </div>
+      </div>
+    </div>
+    <div style="margin: auto; text-align: center;">
+    <button class="btn" style="background: white; " onclick=""> CHECKOUT -> </button>
+    <button class="btn" style="background: white; " onclick="location.href='/all_bots'"> ADD MORE</button>
+    </div>
+    <h1> HAPPY SHOPPING !!</h1>
+</body>
+</html>

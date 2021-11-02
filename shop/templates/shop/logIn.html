@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SIGN UP</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  {% load static %}
+  <link rel='stylesheet' type="text/css" href="{% static 'shop/login.css' %}">
+<link rel="shortcut icon" type="image/png" href="{% static 'shop/data/img/icon.png' %}" />
+</head>
+{% load static %}
+<body>
+<!-- partial:index.partial.html -->
+<!-- multistep form -->
+<!-- {% for message in messages  %}            
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show  alert alert-danger" role="alert">
+	  <strong>Message : </strong> {{ message }}
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+{% endfor %}     -->
+  
+<div id="flash">
+		   {% if messages %}
+				{% for message in messages %}
+						 <div class="alert alert-{{ message.tags}} m-0" role="alert">
+								<strong>{{ message }}</strong>
+						  </div>
+				{% endfor %}
+		   {% endif %}
+</div>
+<div class="container right-panel-active">
+	<!-- Sign Up -->
+	<div class="container__form container--signup">
+		<form action="/signup" class="form" method="post">{% csrf_token %}
+			<h2 class="form__title">Sign Up</h2>
+			<input type="text" placeholder="Username" name="username" class="input" required/>
+			<input type="email" placeholder="Email" name="email" class="input" required/>
+			<input type="number" placeholder="Phone Number" name="phone" class="input" required/>
+			<input type="text" placeholder="Referral Code" name="anoreferral" class="input"/>
+			<input type="password" placeholder="Password" name="pass1" class="input" required/>
+			<input type="password" placeholder="Confirm Password" name="pass2" class="input" required/>
+			{% csrf_token %}
+			<button type="submit" class="btn" >Sign Up</button>
+		</form>
+	</div>
+
+	<!-- Sign In -->
+	<div class="container__form container--signin">
+		<form action="/handleLogin" class="form" method="post">{% csrf_token %}
+			<h2 class="form__title">Sign In</h2>
+			<input type="username" placeholder="username" name="username" class="input" required/>
+			<input type="password" placeholder="Password" name="password" class="input" required/>
+			<!-- <a href="#" class="link">Forgot your password?</a> -->
+			{% csrf_token %}
+			<button class="btn">Sign In</button>
+		</form>
+	</div>
+
+	<!-- Overlay -->
+	<div class="container__overlay">
+		<div class="overlay">
+			<div class="overlay__panel overlay--left">
+				<button class="btn" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay__panel overlay--right">
+				<button class="btn" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+	<!-- {% load static %}
+			<img class="overlay" src="{% static 'shop/data/img/pexels-fauxels-3183198.jpg' %}" alt=""> -->
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script><script  src="{% static 'shop/login.js' %}"></script>
+<script>
+	setTimeout(function () {
+	 $('#flash').fadeOut('fast');
+	 },5000);
+  </script> 
+</body>
+</html>

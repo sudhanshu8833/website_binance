@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTS ALLEY: AVAILABLE BOTS</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'shop/data/img/icon.png'%}" />
+</head>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+
+<link rel="stylesheet" href="{% static 'shop/style.css'%}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<link rel="stylesheet" href="{% static 'shop/all_bots.css' %}">
+
+<body>
+
+    <div id="flash">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags}} m-0" role="alert">
+            <strong>{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="heading">
+        <div>
+            <h1>
+                BOTS AVAILABLE
+            </h1>
+            <p>Best bots out there buy once and let the bot do the working</p>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="well well-sm">
+            <strong style="font-size: 16px; padding: 10px;">Display</strong>
+            <div class="btn-group">
+                <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+                    </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                        class="glyphicon glyphicon-th"></span>Grid</a>
+            </div>
+            <button class="btn btn-danger me-md-auto dash" onclick="location.href='/index'">DASHBOARD</button>
+        </div>
+        <!-- ///////////////////////////////////////
+
+        ITNE PORTION KO REPEATEDLY CALL KARDENA FOR LOOP SE
+
+        ////////////////////////////////////// -->
+        {% for i in total %}
+        <div id="products" class="row list-group">
+
+
+            <div class="item  col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h2 class="group inner list-group-item-heading">
+                            {{ i.title }}</h2>
+                        <p class="group inner list-group-item-text" style="font-size: 16.5px;">
+                            {{ i.description }}</p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    Rs {{ i.Price }}</p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <button class="btn btn-outline btn-info" data-toggle="modal"
+                                    data-target="#Modal-DELETE-{{i.title}}"><b> PURCHASE </b></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="modal fade" id="Modal-DELETE-{{i.title}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">
+                            {{ i.title }}
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="/all_bots">{% csrf_token %}
+                            <h4 class="text-center">
+                                Are you sure to buy {{ i.title }} for {{ i.Price }}?
+                            </h4>
+                            <br>
+                            <h6 class="text-center">
+                                By clicking BUY, you will BUY this item.
+                            </h6>
+                            <br>
+                            <input id="buy_item" name="buy_item" type="hidden" value="{{ i.title }}">
+                            
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline btn-success">BUY</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                        </button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script src="{% static 'shop/script.js' %}"></script>
+<script src="{% static 'shop/all_bots.js' %}"></script>
+<script>
+    setTimeout(function () {
+        $('#flash').fadeOut('fast');
+    }, 5000);
+</script>
+
+</html>
