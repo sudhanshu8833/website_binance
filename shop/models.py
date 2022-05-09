@@ -9,7 +9,7 @@ class User1(models.Model):
     fullname=models.CharField(max_length=50,default='SOME STRING')
     account_num=models.IntegerField(default='999')
     ifsc=models.CharField(max_length=50,default='SOME STRING')
-    referral=models.CharField(max_length=10)
+    referral=models.IntegerField(default=0)
     another_referral=models.CharField(max_length=50)
     credit=models.IntegerField(default='999')
     binance_API_keys=models.CharField(max_length=100,default='SOME STRING')
@@ -17,6 +17,9 @@ class User1(models.Model):
     angel_API_keys=models.CharField(max_length=100,default='SOME STRING')
     angel_username=models.CharField(max_length=100,default='SOME STRING')
     angel_password=models.CharField(max_length=100, default='SOME STRING')
+    security=models.IntegerField(default=0)
+    profit=models.IntegerField(default=0)
+
 
 class BOT1(models.Model):
     binance_API_keys=models.CharField(max_length=100,default='SOME STRING')

@@ -107,6 +107,7 @@ def all_bots(request):
                 buy=BOT1(binance_API_keys=actual_user.binance_API_keys,binance_Secret_Keys=actual_user.binance_Secret_Keys,Expiry_date=today,email=current_user.email,Max_loss=0)
                 buy.save()
                 actual_user.credit-=obj.Price
+                actual_user.security+=obj.price/6
                 actual_user.save()
                 messages.success(request, f"Congratulations! You purchased {obj.title} for Rs {obj.Price}")
                 refer(request,obj.Price)
@@ -120,6 +121,7 @@ def all_bots(request):
                 buy=BOT2(binance_API_keys=actual_user.binance_API_keys,binance_Secret_Keys=actual_user.binance_Secret_Keys,Expiry_date=today,email=current_user.email,Max_loss=0)
                 buy.save()
                 actual_user.credit-=obj.Price
+                actual_user.security+=obj.price/6
                 actual_user.save()
                 messages.success(request, f"Congratulations! You purchased {obj.title} for Rs {obj.Price}")
                 refer(request,obj.Price)
@@ -133,6 +135,7 @@ def all_bots(request):
                 buy=BOT3(angel_API_keys=actual_user.angel_API_keys,username=actual_user.angel_username,password=actual_user.angel_password,Expiry_date=today,email=current_user.email,Max_loss=0)
                 buy.save()
                 actual_user.credit-=obj.Price
+                actual_user.security+=obj.price/6
                 actual_user.save()
                 messages.success(request, f"Congratulations! You purchased {obj.title} for Rs {obj.Price}")
                 refer(request,obj.Price)
@@ -146,6 +149,7 @@ def all_bots(request):
                 buy=BOT4(angel_API_keys=actual_user.angel_API_keys,username=actual_user.angel_username,password=actual_user.angel_password,Expiry_date=today,email=current_user.email,Max_loss=0)
                 buy.save()
                 actual_user.credit-=obj.Price
+                actual_user.security+=obj.price/6
                 actual_user.save()
                 messages.success(request, f"Congratulations! You purchased {obj.title} for Rs {obj.Price}")
                 refer(request,obj.Price)
@@ -319,7 +323,7 @@ def settings(request):
             buy4.angel_API_keys=angelapi
             buy4.angel_username=angelusername
             buy4.angel_password=angelpassword
-        messages.error(request, "Your details added successfully!!")
+        messages.success(request, "Your details added successfully!!")
         return redirect('index')
     myuser=User1.objects.get(username=current_user)
     params={'myuser':myuser}
@@ -362,7 +366,9 @@ def signup(request):
 
             except:
                 pass
-
+            if object is not None:
+                object.referral+=1
+                object.save()
             if object is None:
                 messages.error(request, "Referral Code is not correct")
                 return redirect('signup')
@@ -398,7 +404,7 @@ def signup(request):
         credit=0
         myuser = User.objects.create_user(username, email, password)
         myuser.save()
-        user = User1(username=username, email=email, password=password,phone=phone,fullname='XYZ',account_num=9999,ifsc='IFSC code',referral='',another_referral=another_referral,credit=credit,binance_API_keys='NONE',binance_Secret_Keys='NONE',angel_API_keys='NONE',angel_username='NONE',angel_password='NONE')
+        user = User1(username=username, email=email, password=password,phone=phone,fullname='XYZ',account_num=9999,ifsc='IFSC code',another_referral=another_referral,credit=credit,binance_API_keys='NONE',binance_Secret_Keys='NONE',angel_API_keys='NONE',angel_username='NONE',angel_password='NONE')
         messages.success(request, " Your Account has been successfully created")
         user.save()
     return render(request, "shop/login.html")
@@ -464,6 +470,15 @@ def handleLogin(request):
             messages.error(request, "Invalid credentials! Please try again")
             return redirect("signup")
 
-    return HttpResponse("404- Not found")
+    return HttpResponse("404- Not found") 
 
+def handleLogout(request):
+    logout(request)
+    messages.success(request, "Successfully logged out")
+    return redirect('/')
 
+def withdraw(request):
+
+    print("withdrawn amount")
+    messages.success(request, "Request Sent Succesfully, Your money will be withdrawn in 3 working days")
+    return redirect('index')

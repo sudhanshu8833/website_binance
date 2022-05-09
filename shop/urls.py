@@ -14,4 +14,6 @@ urlpatterns = [
     path("index", views.index, name="index"),
     path("settings", views.settings, name="settings"),
     path("checkout", views.checkout, name="checkout"),
+    path("handleLogout", views.handleLogout, name="handleLogout"),
+    path("withdraw", views.withdraw, name="withdraw"),
 ]

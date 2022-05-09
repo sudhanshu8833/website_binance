@@ -14,11 +14,11 @@
 <aside class="sidebar position-fixed top-0 left-0 overflow-auto h-100 float-left" id="show-side-navigation1">
   <i class="uil-bars close-aside d-md-none d-lg-none" data-close="show-side-navigation1"></i>
   <div class="sidebar-header d-flex justify-content-center align-items-center px-3 py-4">
-    <!-- <img
+    <img
          class="rounded-pill img-fluid"
          width="65"
-         src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
-         alt=""> -->
+         src="{% static 'shop/data/img/icons/bot.png' %}"
+         alt="">
     <div class="ms-2">
       <h5 class="fs-6 mb-0">
         <a class="text-decoration-none" href="/settings">{{ myuser.username }}</a>
@@ -78,8 +78,18 @@
     </li>
 
     <li class="">
-      <i class="uil-setting"></i><a href="/paytm/payments"> payments</a>
+      <i class="uil-usd-circle"></i><a href="/paytm/payments"> payments</a>
     </li>
+
+    <li class="">
+      <i class="uil-money-withdraw"></i><a href="/withdraw"> Withdraw</a>
+    </li>
+
+    <li class="">
+      <i class="uil-signout"></i><a href="/handleLogout"> Logout</a>
+    </li>
+
+
     <div class="modal fade" id="Modal-AMOUNT" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -161,9 +171,9 @@
             <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
             <div class="ms-3">
               <div class="d-flex align-items-center">
-                <h3 class="mb-0">{{i}}</h3> <span class="d-block ms-2">BOTS AVAILABLE</span>
+                <h3 class="mb-0">{{ myuser.referral }}</h3> <span class="d-block ms-2">Referral</span>
               </div>
-              <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+              <p class="fs-normal mb-0">Number of persons you have referred</p>
             </div>
           </div>
         </div>
@@ -174,7 +184,7 @@
               <div class="d-flex align-items-center">
                 <h3 class="mb-0">{{ myuser.credit }}</h3> <span class="d-block ms-2">CREDITS</span>
               </div>
-              <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+              <p class="fs-normal mb-0">Recharge your credits when it's low, and enjoy purchasing bots</p>
             </div>
           </div>
         </div>
@@ -183,9 +193,9 @@
             <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
             <div class="ms-3">
               <div class="d-flex align-items-center">
-                <h3 class="mb-0">{{j}}</h3> <span class="d-block ms-2">OWNED</span>
+                <h3 class="mb-0">{{ myuser.security }}</h3> <span class="d-block ms-2">SECURITY</span>
               </div>
-              <p class="fs-normal mb-0">Lorem ipsum dolor sit amet</p>
+              <p class="fs-normal mb-0">Securty ammount, please recharge when it's low</p>
             </div>
           </div>
         </div>
