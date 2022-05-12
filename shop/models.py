@@ -1,60 +1,31 @@
 from django.db import models
 from django.db.models.fields import DateField, IntegerField
+from django.forms import DateTimeInput
 
 class User1(models.Model):
     username=models.CharField(max_length=50,default='SOME STRING')
     email=models.EmailField(max_length=50)
     password=models.CharField(max_length=25)
     phone=models.IntegerField(default='999')
-    fullname=models.CharField(max_length=50,default='SOME STRING')
-    account_num=models.IntegerField(default='999')
-    ifsc=models.CharField(max_length=50,default='SOME STRING')
-    referral=models.IntegerField(default=0)
-    another_referral=models.CharField(max_length=50)
-    credit=models.IntegerField(default='999')
     binance_API_keys=models.CharField(max_length=100,default='SOME STRING')
     binance_Secret_Keys=models.CharField(max_length=100,default='SOME STRING') 
-    angel_API_keys=models.CharField(max_length=100,default='SOME STRING')
-    angel_username=models.CharField(max_length=100,default='SOME STRING')
-    angel_password=models.CharField(max_length=100, default='SOME STRING')
-    security=models.IntegerField(default=0)
-    profit=models.IntegerField(default=0)
+    group=models.IntegerField(default='0')
 
 
-class BOT1(models.Model):
-    binance_API_keys=models.CharField(max_length=100,default='SOME STRING')
-    binance_Secret_Keys=models.CharField(max_length=100,default='SOME STRING') 
-    Expiry_date=models.DateField()
-    email=models.EmailField(max_length=50)
-    Max_loss=models.IntegerField()
+class orders(models.Model):
+    symbol=models.CharField(max_length=100,default='SOME STRING')
+    price_in=models.FloatField(default=0)
+    time_in=models.DateTimeField(default=DateTimeInput)
+    order_type=models.CharField(max_length=100,default='SOME STRING')
 
-class BOT2(models.Model):
-    binance_API_keys=models.CharField(max_length=100,default='SOME STRING')
-    binance_Secret_Keys=models.CharField(max_length=100,default='SOME STRING') 
-    Expiry_date=models.DateField()
-    email=models.EmailField(max_length=50)
-    Max_loss=models.IntegerField()
+class positions(models.Model):
+    symbol=models.CharField(max_length=100,default='SOME STRING')
+    price_in=models.FloatField(default=0)
+    time_in=models.DateTimeField(default=DateTimeInput)
+    order_type=models.CharField(max_length=100,default='SOME STRING')
+    current_pl=models.FloatField(default=0)
 
-
-class BOT3(models.Model):
-    angel_API_keys=models.CharField(max_length=100,default='SOME STRING')
-    username=models.CharField(max_length=100,default='SOME STRING')
-    password=models.CharField(max_length=100, default='SOME STRING') 
-    Expiry_date=models.DateField()
-    email=models.EmailField(max_length=50)
-    Max_loss=models.IntegerField()
-
-
-class BOT4(models.Model):
-    angel_API_keys=models.CharField(max_length=100,default='SOME STRING')
-    username=models.CharField(max_length=100,default='SOME STRING')
-    password=models.CharField(max_length=100, default='SOME STRING') 
-    Expiry_date=models.DateField()
-    email=models.EmailField(max_length=50)
-    Max_loss=models.IntegerField()
-
-class BOT(models.Model):
-    Price=models.IntegerField()
-    subscription_time=models.CharField(max_length=100) 
-    description=models.CharField(max_length=5000) 
-    title=models.CharField(max_length=50)
+class groups(models.Model):
+    num=models.IntegerField(default='0')
+    profit=models.FloatField(default=0)
+    position_size=models.FloatField(default=0)

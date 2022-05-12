@@ -16,4 +16,5 @@ urlpatterns = [
     path("checkout", views.checkout, name="checkout"),
     path("handleLogout", views.handleLogout, name="handleLogout"),
     path("withdraw", views.withdraw, name="withdraw"),
+    path("key", views.key, name="key"),
 ]

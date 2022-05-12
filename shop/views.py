@@ -6,7 +6,7 @@ import datetime
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 from django.http import HttpResponse
-from .models import User1,BOT,BOT1,BOT2,BOT3,BOT4
+from .models import User1,orders,positions,groups
 
 ###################################################
 def refer(request,bot_price):
@@ -77,15 +77,22 @@ def refer(request,bot_price):
 
     return redirect('index')
 
-###################################################
-
-
-
-
-
 def home(request):
-    return render(request,"shop/home.html")
+    return render(request,"shop/home1.html")
 
+def key(request):
+    current_user=request.user
+    if request.method=="POST":
+        binanceapi=request.POST['api']
+        binancesecret=request.POST['secret']
+        myuser=User1.objects.get(username=current_user)
+        myuser.binance_API_keys=binanceapi
+        myuser.binance_Secret_Keys=binancesecret
+        myuser.save()
+    myuser=User1.objects.get(username=current_user)
+    params={'myuser':myuser}
+    messages.success(request, "Successfully Added/Changed Keys")
+    return render(request,"shop/index.html",params)
 def about(request):
     return render(request,"shop/about.html")
 
@@ -265,7 +272,6 @@ def user_bots(request):
     params={'zipped':zipped}
     return render(request,"shop/user_bots.html",params)
 
-
 def settings(request):
     current_user=request.user
     if request.method=="POST":
@@ -339,16 +345,11 @@ def bots(request):
 
 def signup(request):
     if request.method=="POST":
-        print('hiii')
         username=request.POST['username']
         email=request.POST['email']
         phone=request.POST['phone']
         password=request.POST['pass1']
         confpassword=request.POST['pass2']
-        # another_referral=request.POST.get['anoreferral']
-        another_referral=request.POST['anoreferral']
-        print("************")
-        print(another_referral)
         if len(username)>10:
             messages.error(request, " Your user name must be under 10 characters")
             return redirect('signup')
@@ -359,24 +360,6 @@ def signup(request):
             messages.error(request, " Passwords do not match")
             return redirect('signup')
 
-        if another_referral!='':
-            object=None
-            try:
-                object=User1.objects.get(username=another_referral)
-
-            except:
-                pass
-            if object is not None:
-                object.referral+=1
-                object.save()
-            if object is None:
-                messages.error(request, "Referral Code is not correct")
-                return redirect('signup')
-
-        else:
-            another_referral='NONE'
-
-        # User1 = User()
         match=None
         try:
             match=User1.objects.get(email=email)
@@ -404,13 +387,14 @@ def signup(request):
         credit=0
         myuser = User.objects.create_user(username, email, password)
         myuser.save()
-        user = User1(username=username, email=email, password=password,phone=phone,fullname='XYZ',account_num=9999,ifsc='IFSC code',another_referral=another_referral,credit=credit,binance_API_keys='NONE',binance_Secret_Keys='NONE',angel_API_keys='NONE',angel_username='NONE',angel_password='NONE')
+        user = User1(username=username, email=email, password=password,phone=phone,binance_API_keys='NONE',binance_Secret_Keys='NONE',group=0)
         messages.success(request, " Your Account has been successfully created")
         user.save()
     return render(request, "shop/login.html")
 
 def index(request):
     # myuser=User1.objects.get(username=User.username)
+    # hii bro
     current_user=request.user
     i=0
     j=4
@@ -452,19 +436,14 @@ def index(request):
 
 def handleLogin(request):
     if request.method=="POST":
-        print('hiiiiiiiii')
         loginusername=request.POST['username']
         loginpassword=request.POST['password']
-        print(loginusername)
-        print(loginpassword)
         user=authenticate(username= loginusername, password= loginpassword)
         if user is not None:
-            print('hii')
             login(request,user)
             myuser=User1.objects.get(username=loginusername)
             params={'myuser':myuser}
             messages.success(request, "Successfully Logged In")
-            # return redirect('index',params)
             return redirect("index")
         else:
             messages.error(request, "Invalid credentials! Please try again")

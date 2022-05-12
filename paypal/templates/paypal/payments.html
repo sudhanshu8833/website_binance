@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOTS ALLEY: USER SETTINGS</title>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="../data/img/icon.png" />
+    <link rel="stylesheet" href="{% static 'paypal/settings.css' %}">
+</head>
+<body>
+    <div class="container">
+
+
+        <!-- Section -->
+        <section class="form-section">
+            <form action="/paypal/payment_processing" method='post'> {% csrf_token %}
+
+              <h2 class="form-section-heading">How much money you want to add?</h2>
+
+              <div class="field-wrap">
+                <div class="field">
+                  <label class="label" for="first-name">Amount : </label>
+                  <input class="input" name ="amount" id="first-name" type="number">
+                </div>
+              </div>
+        </section>
+        <button type="submit" class="btn" >SUBMIT</button>
+
+        <button type="button" class="btn" onclick="location.href='../../index'">DASHBOARD</button>
+      </form>
+    </div>  
+</body>
+</html>

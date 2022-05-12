@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>BOTS-ALLEY: USER</title>
-  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  
   {% load static %}
-<link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'><link rel="stylesheet" href="{% static 'shop/style.css' %}">
+<link rel='stylesheet' href='https://unicons.iconscout.com/release/v3.0.6/css/line.css'>
+{% load static %}
+<link rel="stylesheet" href="{% static 'shop/style.css' %}">
 </head>
 <link rel="shortcut icon" type="image/png" href="{% static 'shop/data/img/icon.png' %}" />
 <body>
@@ -26,93 +29,29 @@
       <p class="mt-1 mb-0">{{ myuser.phone }}</p>
     </div>
   </div>
-<!-- 
-  <div class="search position-relative text-center px-4 py-3 mt-2">
-    <input type="text" class="form-control w-100 border-0 bg-transparent" placeholder="Search here">
-    <i class="fa fa-search position-absolute d-block fs-6"></i>
-  </div> -->
+
 
   <ul class="categories list-unstyled">
     <li class="">
       <i class="uil-estate fa-fw"></i><a href="/index" id="dashboard"> Dashboard</a>
-      <!-- <ul class="sidebar-dropdown list-unstyled">
-        <li><a href="#">Lorem ipsum</a></li>
-        <li><a href="#">ipsum dolor</a></li>
-        <li><a href="#">dolor ipsum</a></li>
-        <li><a href="#">amet consectetur</a></li>
-        <li><a href="#">ipsum dolor sit</a></li>
-      </ul> -->
     </li>
-    <!-- <li class="has-dropdown">
-      <i class="uil-envelope-download fa-fw"></i><a href="#"> Mailbox</a>
-      <ul class="sidebar-dropdown list-unstyled">
-        <li><a href="#">Lorem ipsum</a></li>
-        <li><a href="#">ipsum dolor</a></li>
-        <li><a href="#">dolor ipsum</a></li>
-        <li><a href="#">amet consectetur</a></li>
-        <li><a href="#">ipsum dolor sit</a></li>
-      </ul>
-    </li> -->
     <li class="">
       <i class="uil-shopping-cart-alt"></i><a href="/all_bots"> Ecommerce</a>
-      <!-- <ul class="sidebar-dropdown list-unstyled">
-        <li><a href="#">Lorem ipsum</a></li>
-        <li><a href="#">ipsum dolor</a></li>
-        <li><a href="#">dolor ipsum</a></li>
-        <li><a href="#">amet consectetur</a></li>
-        <li><a href="#">ipsum dolor sit</a></li>
-      </ul> -->
     </li>
     <li>
       <i class="uil-bag"></i><a href="/user_bots">Bots owned</a>
-      <!-- <ul class="sidebar-dropdown list-unstyled">
-        <li><a href="#">Lorem ipsum</a></li>
-        <li><a href="#">ipsum dolor</a></li>
-        <li><a href="#">dolor ipsum</a></li>
-        <li><a href="#">amet consectetur</a></li>
-        <li><a href="#">ipsum dolor sit</a></li>
-      </ul> -->
-    </li>
-    <li class="">
-      <i class="uil-setting"></i><a href="/settings"> Settings</a>
     </li>
 
     <li class="">
-      <i class="uil-usd-circle"></i><a href="/paytm/payments"> payments</a>
+      <i class="uil-usd-circle"></i><a href="/paytm/payments"> Paytm</a>
     </li>
-
     <li class="">
-      <i class="uil-money-withdraw"></i><a href="/withdraw"> Withdraw</a>
+      <i class="uil-usd-circle"></i><a href="/paypal/payments"> Paypal</a>
     </li>
 
     <li class="">
       <i class="uil-signout"></i><a href="/handleLogout"> Logout</a>
     </li>
-
-
-    <div class="modal fade" id="Modal-AMOUNT" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Get Credits</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form action="/user_bots" method="post" >{% csrf_token %}
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Enter Amount here:</label>
-                <input type="text" class="form-control" name="amount" id="recipient-name">
-              </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" >Save changes</button>
-          </div>
-        </form>
-        </div>
-      </div>
-    </div>
-
   </ul>
 </aside>
 
@@ -127,11 +66,41 @@
       </div>
       <div class="collapse navbar-collapse" id="toggle-navbar">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="/settings" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Settings
-            </a>
-          </li>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add/Change Keys
+</button>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add/Change Binance API Key & Binance Secret Key</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- .... -->
+        {% csrf_token %}
+        <form action="/key" method="post">{% csrf_token %}
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Binance API Key:</label>
+            <input type="text" class="form-control" name="api" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Binance Secret Key:</label>
+            <input type="text" class="form-control" name="secret" id="recipient-name">
+          </div>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
           <!-- <li class="nav-item">
             <a class="nav-link" href="#"><i class="uil-comments-alt"></i><span></span></a>
           </li>
@@ -164,54 +133,21 @@
       </div>
     </div>
 
-    <section class="statistics mt-4">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
-            <i class="uil-envelope-shield fs-2 text-center bg-primary rounded-circle"></i>
-            <div class="ms-3">
-              <div class="d-flex align-items-center">
-                <h3 class="mb-0">{{ myuser.referral }}</h3> <span class="d-block ms-2">Referral</span>
-              </div>
-              <p class="fs-normal mb-0">Number of persons you have referred</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="box d-flex rounded-2 align-items-center mb-4 mb-lg-0 p-3">
-            <i class="uil-file fs-2 text-center bg-danger rounded-circle"></i>
-            <div class="ms-3">
-              <div class="d-flex align-items-center">
-                <h3 class="mb-0">{{ myuser.credit }}</h3> <span class="d-block ms-2">CREDITS</span>
-              </div>
-              <p class="fs-normal mb-0">Recharge your credits when it's low, and enjoy purchasing bots</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="box d-flex rounded-2 align-items-center p-3">
-            <i class="uil-users-alt fs-2 text-center bg-success rounded-circle"></i>
-            <div class="ms-3">
-              <div class="d-flex align-items-center">
-                <h3 class="mb-0">{{ myuser.security }}</h3> <span class="d-block ms-2">SECURITY</span>
-              </div>
-              <p class="fs-normal mb-0">Securty ammount, please recharge when it's low</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    
   </div>
 </section>
 <!-- partial -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js'></script>
 <!-- <script src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.jshttps://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script> -->
 <script  src="{% static 'shop/script.js' %}"></script>
 <script>
-setTimeout(function () {
-	 $('#flash').fadeOut('fast');
-	 },5000);
+$(function() {
+   $('#flash').delay(500).fadeIn('normal', function() {
+      $(this).delay(2500).fadeOut();
+   });
+});
 </script> 
 {% endif %}
 </body>

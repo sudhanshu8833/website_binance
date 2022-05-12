@@ -22,4 +22,5 @@ path('admin/', admin.site.urls),
 path("", include('shop.urls')),
 path("userbot", include('userbot.urls')),
 path("paytm/", include('paytm.urls')),
+path("paypal/", include('paypal.urls')),
 ]

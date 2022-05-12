@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'shop',
     'userbot',
     'paytm',
+    'paypal',
 ]
 
 MIDDLEWARE = [
